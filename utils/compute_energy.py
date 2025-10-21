@@ -16,7 +16,7 @@ def phi (rij) :
 
 def force (rkj, xj, xk) :
     '''
-    this function compute the force between atoms k and j along the axis specified in the lasta arguments
+    this function computes the force between atoms k and j along the axis specified in the last arguments
     '''
     epsilon = 0.345
     sigma = 2.644
@@ -26,9 +26,8 @@ def force (rkj, xj, xk) :
 
 def energy (filename, rc=None):
     '''
-    this function receives a file with the coordinates (x, y, z) of all atoms,
-    performs a loop over the atoms to compute the distances and finally compute the potential energy
-    if rc is not None, performs a cutoff
+    this function receives a file with the coordinates (x, y, z) of all atoms and the cutoff radius rc,
+    it computes the potential energy, if rc is not None, performs a cutoff
     '''
 
     file_path = "../data/" + filename
@@ -62,7 +61,8 @@ def energy (filename, rc=None):
 
 def force_matrix (filename, rc=None) :
     '''
-    this function returns a matrix containing the total force along x, y and z for each atom 
+    this function receives a file with the coordinates (x, y, z) of all atoms and the cutoff radius rc,
+    it returns a matrix containing the total force along x, y and z for each atom 
     '''
     file_path = "../data/" + filename
 
@@ -103,7 +103,8 @@ def force_matrix (filename, rc=None) :
 
 def nbrs (filename, rc) :
     '''
-    this function computes the total number of neighbours for each atom in the file
+    this function receives a file with the coordinates (x, y, z) of all atoms and the cutoff radius rc,
+    it computes the total number of neighbours for each atom in the file
     '''
 
     file_path = "../data/" + filename
@@ -131,8 +132,9 @@ def nbrs (filename, rc) :
 
 def which_nbrs (filename, rc) :
     '''
-    this function return a list, each entrance i of the list contains an array with the atom numbers
-    of the neighbours of the atom i
+    this function receives a file with the coordinates (x, y, z) of all atoms and the cutoff radius rc,
+    it returns a list, each entrance i of the list contains an array with the atom numbers of the
+    neighbours of the atom i
     '''
 
     file_path = "../data/" + filename
@@ -158,8 +160,9 @@ def which_nbrs (filename, rc) :
 
 def force_matrix_nbrs (filename, rc) :
     '''
-    this function returns a matrix containing the total force along x, y and z for each atom
-    it computes the forces only between the neighbours, using the which_nbrs function 
+    this function receives a file with the coordinates (x, y, z) of all atoms and the cutoff radius rc,
+    returns a matrix containing the total force along x, y and z for each atom
+    it computes the forces only between the neighbours, using the which_nbrs function with rc
     '''
     file_path = "../data/" + filename
 
@@ -185,9 +188,8 @@ def force_matrix_nbrs (filename, rc) :
 
 def energy_nbrs (filename, rc) :
     '''
-    this function receives a file with the coordinates (x, y, z) of all atoms,
-    performs a loop over the atoms to compute the distances and finally compute the potential energy
-    using only the neighbours
+    this function receives a file with the coordinates (x, y, z) of all atoms and the cutoff radius rc,
+    computes the total potential energy only between the neighbours, using the which_nbrs function with rc
     '''
 
     file_path = "../data/" + filename
